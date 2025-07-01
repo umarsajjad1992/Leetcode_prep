@@ -8,13 +8,13 @@ Each folder contains:
 
 | Topic               | Solved |
 |--------------------|--------|
-| Arrays             | ✅     |
-| Strings            | ✅     |
-| Linked Lists       | 🔄     |
-| Trees              | 🔄     |
+| Arrays             | 🔄     |
+| Strings            | ⏳     |
+| Linked Lists       | ⏳     |
+| Trees              | ⏳     |
 | Graphs             | ⏳     |
 | Dynamic Programming| ⏳     |
-| Math               | ✅     |
+| Math               | ⏳     |
 
 > ⏳ = Yet to start, 🔄 = In progress, ✅ = Completed
 
@@ -40,8 +40,8 @@ Each folder contains:
 
 ## 📅 Timeline
 
-Started: **[Insert Start Date]**  
-Goal: **Daily practice for at least X months**
+Started: **1st July 2025**  
+Goal: **Daily practice for at least 6 months**
 
 ## 🤝 Contributing
 
@@ -50,7 +50,6 @@ This is a personal repo, but feel free to open discussions or suggest improvemen
 ## 📬 Connect
 
 - GitHub: [umarsajjad1992](https://github.com/umarsajjad1992)
-- LinkedIn: [Your LinkedIn Here]
 
 ---
 
