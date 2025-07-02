@@ -24,7 +24,7 @@ as each element is visited exactly once.
 
 """
 
-# My Code
+# First approach
 def spiral(matrix: list[list[int]]) -> list:
     res = []
 
@@ -62,7 +62,7 @@ def spiral(matrix: list[list[int]]) -> list:
         if check_fin(): return res
 
 # Cleaner approach
-def spiral_2(matrix: list[list[int]]) -> list:
+def spiral_clean(matrix: list[list[int]]) -> list:
     res = []
     
     # Checking if matrix is non empty
@@ -86,4 +86,4 @@ def spiral_2(matrix: list[list[int]]) -> list:
                 
     return res
 
-print(spiral_2([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16], [17, 18, 19, 20]]))
+print(spiral_clean([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16], [17, 18, 19, 20]]))
