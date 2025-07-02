@@ -32,9 +32,9 @@ def num_smaller(num_list: list[int]) -> list[int]:
             temp_dict[num] = i
     
     # Iterate through the list again and append the index to the result list
-    for num in num_sorted:
+    for num in num_list:
         ret.append(temp_dict[num])
-    
+
     return(ret)
 
 print(num_smaller([1, 2, 9, 15, 12, 5, 2, 7, 9]))
