@@ -1,3 +1,30 @@
+"""
+FILE: max_profit.py
+
+DESCRIPTION:
+This script contains multiple implementations of functions to calculate the maximum profit 
+that can be achieved from buying and selling a stock given a list of stock prices. Each 
+function assumes that you can buy and sell the stock only once, and the goal is to maximize 
+the profit.
+
+FUNCTIONS:
+1. max_stock_profit: A naive approach with O(n^2) time complexity.
+2. max_stock_profit_greedy: A greedy algorithm with O(n) time complexity.
+3. max_stock_profit_v2: An efficient version of the first attempt with O(n) time complexity.
+
+EXAMPLE USAGE:
+Input: [7, 1, 5, 3, 6, 4]
+Output:
+- max_stock_profit: 5
+- max_stock_profit_greedy: 5
+- max_stock_profit_v2: 5
+
+TIME COMPLEXITY:
+- max_stock_profit: O(n^2), due to nested iteration over the list.
+- max_stock_profit_greedy: O(n), as it uses a single pass with two pointers.
+- max_stock_profit_v2: O(n), as it iterates through the list once in reverse.
+"""
+
 # My first attempt (O(n^2) time complexity)
 def max_stock_profit(prices: list[int]) -> int:
     profit = 0
