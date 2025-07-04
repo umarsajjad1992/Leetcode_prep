@@ -20,11 +20,14 @@ Output:
 TIME COMPLEXITY:
 - sorted_squares: O(n log n), due to the sorting step.
 - sorted_squares_v2: O(n), as it uses a two-pointer approach to merge sorted subarrays.
+- sorted_squares_v3: O(n), as it uses a two-pointer approach to merge sorted subarrays.
 
 SPACE COMPLEXITY:
 - sorted_squares: O(n), due to the storage of squared values.
 - sorted_squares_v2: O(n), due to the storage of squared values and merged results.
+- sorted_squares_v3: O(1), due to only.
 """
+from collections import deque
 
 # My first attempt
 def sorted_squares(num_list: list[int]) -> list:
@@ -63,11 +66,27 @@ def sorted_squares_v2(num_list: list[int]) -> list:
         if len(A) == 0:
             ret.extend(B[:])
             print(ret)
-        if len(B) == 0:
+        else:
             ret.extend(A[:])
         
         return [num**2 for num in ret]
     
     return merge(A, B)
 
+
+# two pointer method
+def sorted_squares_v3(num_list: list[int]) -> list:
+    answers = deque()
+
+    while num_list:
+        l_val, r_val = num_list[0], num_list[-1]
+        if (abs(l_val) > abs(r_val)):
+            answers.appendleft(l_val**2)
+            num_list.pop(0)
+        else:
+            answers.appendleft(r_val**2)
+            num_list.pop()
+
+    return list(answers)
 print(sorted_squares_v2([-7, -3, -1, 0, 2, 3, 11]))
+print(sorted_squares_v3([-7, -3, -1, 0, 2, 3, 11]))
