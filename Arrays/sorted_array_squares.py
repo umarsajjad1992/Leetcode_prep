@@ -8,24 +8,27 @@ and positive integers, and the goal is to efficiently produce a sorted array of 
 
 FUNCTIONS:
 1. sorted_squares: A simple implementation using list comprehension and sorting.
-2. sorted_squares_v2: A more efficient implementation that merges two sorted subarrays 
-   (negative and positive parts) to produce the result.
+2. sorted_squares_v2: A more efficient implementation that uses a two-pointer approach 
+   to merge the squares of negative and positive numbers into a sorted array.
+3. sorted_squares_v3: An optimized implementation using a two-pointer approach to 
+   directly construct the sorted array of squares in reverse order.
 
 EXAMPLE USAGE:
 Input: [-4, -1, 0, 3, 10]
 Output:
 - sorted_squares: [0, 1, 9, 16, 100]
 - sorted_squares_v2: [0, 1, 9, 16, 100]
+- sorted_squares_v3: [0, 1, 9, 16, 100]
 
 TIME COMPLEXITY:
 - sorted_squares: O(n log n), due to the sorting step.
-- sorted_squares_v2: O(n), as it uses a two-pointer approach to merge sorted subarrays.
-- sorted_squares_v3: O(n), as it uses a two-pointer approach to merge sorted subarrays.
+- sorted_squares_v2: O(n), as it uses a two-pointer approach to merge sorted squares.
+- sorted_squares_v3: O(n), as it uses a two-pointer approach to construct the result array.
 
 SPACE COMPLEXITY:
 - sorted_squares: O(n), due to the storage of squared values.
 - sorted_squares_v2: O(n), due to the storage of squared values and merged results.
-- sorted_squares_v3: O(1), due to only.
+- sorted_squares_v3: O(n), due to the storage of the result array.
 """
 from collections import deque
 
@@ -88,5 +91,7 @@ def sorted_squares_v3(num_list: list[int]) -> list:
             num_list.pop()
 
     return list(answers)
+
+
 print(sorted_squares_v2([-7, -3, -1, 0, 2, 3, 11]))
 print(sorted_squares_v3([-7, -3, -1, 0, 2, 3, 11]))
