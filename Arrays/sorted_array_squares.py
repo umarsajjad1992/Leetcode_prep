@@ -80,18 +80,18 @@ def sorted_squares_v2(num_list: list[int]) -> list:
 # two pointer method
 def sorted_squares_v3(num_list: list[int]) -> list:
     answers = deque()
-
-    while num_list:
-        l_val, r_val = num_list[0], num_list[-1]
-        if (abs(l_val) > abs(r_val)):
-            answers.appendleft(l_val**2)
-            num_list.pop(0)
+    l, r = 0, len(num_list) - 1
+    while l <= r:
+        left, right = abs(num_list[l]), abs(num_list[r])
+        if left > right:
+            answers.appendleft(left**2)
+            l += 1
         else:
-            answers.appendleft(r_val**2)
-            num_list.pop()
+            answers.appendleft(right**2)
+            r -= 1
 
     return list(answers)
 
 
-print(sorted_squares_v2([-7, -3, -1, 0, 2, 3, 11]))
+# print(sorted_squares_v2([-7, -3, -1, 0, 2, 3, 11]))
 print(sorted_squares_v3([-7, -3, -1, 0, 2, 3, 11]))
