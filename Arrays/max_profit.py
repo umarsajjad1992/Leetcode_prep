@@ -1,32 +1,31 @@
 """
-FILE: max_profit.py
+Maximum Stock Profit Problem
 
-DESCRIPTION:
-This script contains multiple implementations of functions to calculate the maximum profit 
-that can be achieved from buying and selling a stock given a list of stock prices. Each 
-function assumes that you can buy and sell the stock only once, and the goal is to maximize 
-the profit.
-
-FUNCTIONS:
-1. max_stock_profit: A naive approach with O(n^2) time complexity.
-2. max_stock_profit_greedy: A greedy algorithm with O(n) time complexity.
-3. max_stock_profit_v2: An efficient version of the first attempt with O(n) time complexity.
-
-EXAMPLE USAGE:
-Input: [7, 1, 5, 3, 6, 4]
-Output:
-- max_stock_profit: 5
-- max_stock_profit_greedy: 5
-- max_stock_profit_v2: 5
-
-TIME COMPLEXITY:
-- max_stock_profit: O(n^2), due to nested iteration over the list.
-- max_stock_profit_greedy: O(n), as it uses a single pass with two pointers.
-- max_stock_profit_v2: O(n), as it iterates through the list once in reverse.
+Calculate maximum profit from buying and selling stock once.
+Three implementations: O(n²) naive, O(n) greedy two-pointer, O(n) reverse iteration.
+Example: [7, 1, 5, 3, 6, 4] → profit = 5 (buy at 1, sell at 6)
 """
 
-# My first attempt (O(n^2) time complexity)
 def max_stock_profit(prices: list[int]) -> int:
+    """
+    Calculate max profit using naive approach.
+    
+    Args:
+        prices (list[int]): List of stock prices
+        
+    Returns:
+        int: Maximum profit possible
+        
+    Algorithm:
+        For each day, find maximum price in remaining days and calculate profit.
+        Keep track of maximum profit found.
+        
+    Time: O(n²), Space: O(1)
+    
+    Example:
+        >>> max_stock_profit([7, 1, 5, 3, 6, 4])
+        5  # Buy at 1, sell at 6
+    """
     profit = 0
     i = 0
     while i < len(prices) - 1:
@@ -36,8 +35,26 @@ def max_stock_profit(prices: list[int]) -> int:
         i += 1
     return profit
 
-# Greedy algorithm (O(n) time complexity)
 def max_stock_profit_greedy(prices: list[int]) -> int:
+    """
+    Calculate max profit using greedy two-pointer approach.
+    
+    Args:
+        prices (list[int]): List of stock prices
+        
+    Returns:
+        int: Maximum profit possible
+        
+    Algorithm:
+        Use two pointers (left=buy, right=sell). Move right pointer forward.
+        If profitable, update max profit. If not, move left to right (new buy day).
+        
+    Time: O(n), Space: O(1)
+    
+    Example:
+        >>> max_stock_profit_greedy([7, 1, 5, 3, 6, 4])
+        5  # Buy at 1, sell at 6
+    """
     maxProf = 0
     l, r = 0, 1
     while r < len(prices):
@@ -49,8 +66,26 @@ def max_stock_profit_greedy(prices: list[int]) -> int:
         r += 1
     return maxProf
 
-# Efficient version of first attempt
 def max_stock_profit_v2(prices: list[int]) -> int:
+    """
+    Calculate max profit using reverse iteration approach.
+    
+    Args:
+        prices (list[int]): List of stock prices
+        
+    Returns:
+        int: Maximum profit possible
+        
+    Algorithm:
+        Iterate prices in reverse. Track maximum price seen so far (future max).
+        For each price, calculate profit as (future max - current price).
+        
+    Time: O(n), Space: O(1)
+    
+    Example:
+        >>> max_stock_profit_v2([7, 1, 5, 3, 6, 4])
+        5  # Buy at 1, sell at 6
+    """
     maxPrice = float('-inf')
     profit = 0
     for price in prices[::-1]:

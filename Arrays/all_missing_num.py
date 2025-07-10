@@ -1,28 +1,36 @@
 """
-DESCRIPTION:
-This script solves the problem of finding missing numbers in a given list of integers.
-The function `all_miss` takes a list of integers as input, where the integers are expected
-to range from 1 to n (n being the length of the list). The function identifies and returns
-a list of numbers that are missing from the input list.
+Find All Missing Numbers
 
-PROBLEM STATEMENT:
-Given an array of size n containing integers ranging from 1 to n, some numbers may be
-missing or duplicated. The task is to find all the missing numbers in the range [1, n].
-
-EXAMPLE:
-Input: [1, 2, 3, 4, 6, 5, 2, 7]
-Output: [8]
+Find all missing numbers from range [1, n] in an array of size n.
+Algorithm: Use set for O(1) lookup, iterate through expected range.
+Time: O(n), Space: O(n)
 """
 
 def all_miss(num_list: list[int]) -> list[int]:
-    # Convert the input list to a set to remove duplicates
-    num_set = set(num_list)
+    """
+    Find all missing numbers from range [1, n] in array of size n.
     
-    # Empty list to store missing numbers
+    Args:
+        num_list (list[int]): Array of integers (may contain duplicates)
+        
+    Returns:
+        list[int]: List of missing numbers from range [1, len(num_list)]
+        
+    Algorithm:
+        1. Convert input to set for O(1) lookup
+        2. Iterate through range [1, n] and check presence in set
+        3. Collect missing numbers
+        
+    Time: O(n), Space: O(n)
+    
+    Example:
+        >>> all_miss([1, 2, 3, 4, 6, 5, 2, 7])
+        [8]  # Missing 8 from range [1, 8]
+    """
+    num_set = set(num_list)
     miss_list = []
 
     for i in range(1, len(num_list) + 1):
-        # Check if the current number is not in the set
         if i not in num_set:
             miss_list.append(i)
     
