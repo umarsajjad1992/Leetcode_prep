@@ -1,38 +1,52 @@
 """
-FILE: number_islands.py
+Number of Islands Problem Solution
 
-DESCRIPTION:
-This script contains a function that calculates the number of islands in a given 2D grid. 
-An island is defined as a group of connected 1s (representing land) surrounded by 0s 
-(representing water). The function uses Breadth-First Search (BFS) to traverse the grid 
-and count the number of distinct islands.
+Find the number of islands in a 2D grid using BFS traversal.
+An island is a group of connected 1s (land) surrounded by 0s (water).
 
-EXAMPLE USAGE:
-Input:
-grid = [
-    [1, 1, 1, 0, 0],
-    [1, 1, 0, 1, 0],
-    [1, 1, 0, 0, 0],
-    [0, 0, 0, 1, 1]
-]
-Output: 3
-
-TIME COMPLEXITY:
-The function visits each cell in the grid exactly once. For a grid with m rows and n columns, 
-the time complexity is O(m * n).
-
-SPACE COMPLEXITY:
-The space complexity is O(m * n) in the worst case, due to the storage of visited cells 
-and the BFS queue.
+Example: [[1,1,0],[0,1,0],[0,0,1]] → 2 islands
 """
 
 def num_islands(grid: list[list[int]]) -> int:
-
+    """
+    Count the number of islands in a 2D grid using BFS.
+    
+    Args:
+        grid (list[list[int]]): 2D grid where 1 represents land and 0 represents water
+        
+    Returns:
+        int: Number of distinct islands
+        
+    Algorithm:
+        1. Iterate through each cell in the grid
+        2. When finding unvisited land (1), start BFS to mark entire island
+        3. Use BFS to visit all connected land cells (4-directional)
+        4. Count each complete island traversal
+        
+    Time: O(m * n), Space: O(m * n)
+    
+    Example:
+        >>> grid = [[1,1,0],[0,1,0],[0,0,1]]
+        >>> num_islands(grid)
+        2  # Two separate islands
+    """
     if not grid:
         return 0
     
     def bfs(row, col):
-    
+        """
+        Mark all connected land cells as visited using BFS.
+        
+        Args:
+            row (int): Starting row position
+            col (int): Starting column position
+            
+        Algorithm:
+            1. Add starting position to queue and mark as visited
+            2. Process queue: for each cell, check 4 directions
+            3. Add unvisited land neighbors to queue
+            4. Continue until all connected land is visited
+        """
         search_queue = []
         
         visited.add((row, col))

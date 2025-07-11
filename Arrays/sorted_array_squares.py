@@ -1,43 +1,62 @@
 """
-FILE: sorted_array_squares.py
+Sorted Array Squares Problem Solutions
 
-DESCRIPTION:
-This script contains functions to compute the squares of elements in a sorted array 
-and return the result as a sorted array. The input array can contain both negative 
-and positive integers, and the goal is to efficiently produce a sorted array of their squares.
+Three approaches to compute squares of a sorted array and return sorted result:
+1. sorted_squares(): Simple sort approach - O(n log n) 
+2. sorted_squares_v2(): Two-pointer merge approach - O(n)
+3. sorted_squares_v3(): Two-pointer deque approach - O(n) [Preferred]
 
-FUNCTIONS:
-1. sorted_squares: A simple implementation using list comprehension and sorting.
-2. sorted_squares_v2: A more efficient implementation that uses a two-pointer approach 
-   to merge the squares of negative and positive numbers into a sorted array.
-3. sorted_squares_v3: An optimized implementation using a two-pointer approach to 
-   directly construct the sorted array of squares in reverse order.
-
-EXAMPLE USAGE:
-Input: [-4, -1, 0, 3, 10]
-Output:
-- sorted_squares: [0, 1, 9, 16, 100]
-- sorted_squares_v2: [0, 1, 9, 16, 100]
-- sorted_squares_v3: [0, 1, 9, 16, 100]
-
-TIME COMPLEXITY:
-- sorted_squares: O(n log n), due to the sorting step.
-- sorted_squares_v2: O(n), as it uses a two-pointer approach to merge sorted squares.
-- sorted_squares_v3: O(n), as it uses a two-pointer approach to construct the result array.
-
-SPACE COMPLEXITY:
-- sorted_squares: O(n), due to the storage of squared values.
-- sorted_squares_v2: O(n), due to the storage of squared values and merged results.
-- sorted_squares_v3: O(n), due to the storage of the result array.
+Example: [-4, -1, 0, 3, 10] → [0, 1, 9, 16, 100]
 """
 from collections import deque
 
 # My first attempt
 def sorted_squares(num_list: list[int]) -> list:
+    """
+    Square all elements and sort using built-in sort (simple approach).
+    
+    Args:
+        num_list (list[int]): Sorted array of integers (can contain negatives)
+        
+    Returns:
+        list[int]: Sorted array of squares
+        
+    Algorithm:
+        1. Square each element using list comprehension
+        2. Sort the squared values using built-in sort
+        
+    Time: O(n log n), Space: O(n)
+    
+    Example:
+        >>> sorted_squares([-4, -1, 0, 3, 10])
+        [0, 1, 9, 16, 100]
+    """
     return sorted([num**2 for num in num_list])
 
 # Non Trivial Version
 def sorted_squares_v2(num_list: list[int]) -> list:
+    """
+    Square elements using two-pointer merge approach (split and merge).
+    
+    Args:
+        num_list (list[int]): Sorted array of integers (can contain negatives)
+        
+    Returns:
+        list[int]: Sorted array of squares
+        
+    Algorithm:
+        1. Handle edge cases (empty array, all positive numbers)
+        2. Split array into positive and negative parts
+        3. Convert negatives to positive and reverse order
+        4. Merge the two sorted arrays of absolute values
+        5. Square the final merged result
+        
+    Time: O(n), Space: O(n)
+    
+    Example:
+        >>> sorted_squares_v2([-4, -1, 0, 3, 10])
+        [0, 1, 9, 16, 100]
+    """
     if not num_list:
         return None
     
@@ -58,6 +77,22 @@ def sorted_squares_v2(num_list: list[int]) -> list:
 
     # Compared and merge the two list A and B
     def merge(A, B):
+        """
+        Merge two sorted arrays into one sorted array.
+        
+        Args:
+            A (list[int]): First sorted array (positive numbers)
+            B (list[int]): Second sorted array (absolute values of negatives)
+            
+        Returns:
+            list[int]: Merged array with squares applied
+            
+        Algorithm:
+            1. Use two pointers to compare elements from both arrays
+            2. Always pick the smaller element and add to result
+            3. Extend result with remaining elements from non-empty array
+            4. Square all elements in the final result
+        """
         a = b = 0
         ret = []
         while A and B:
@@ -79,6 +114,30 @@ def sorted_squares_v2(num_list: list[int]) -> list:
 
 # two pointer method
 def sorted_squares_v3(num_list: list[int]) -> list:
+    """
+    Square elements using two-pointer deque approach (optimal solution).
+    
+    Args:
+        num_list (list[int]): Sorted array of integers (can contain negatives)
+        
+    Returns:
+        list[int]: Sorted array of squares
+        
+    Algorithm:
+        1. Use two pointers: left at start, right at end
+        2. Compare absolute values of elements at both pointers
+        3. Square the larger absolute value and add to front of deque
+        4. Move the pointer that had the larger absolute value
+        5. Continue until pointers meet
+        
+    Time: O(n), Space: O(n)
+    
+    Example:
+        >>> sorted_squares_v3([-4, -1, 0, 3, 10])
+        [0, 1, 9, 16, 100]
+        
+    Note: Preferred solution - most efficient and clean implementation.
+    """
     answers = deque()
     l, r = 0, len(num_list) - 1
     while l <= r:

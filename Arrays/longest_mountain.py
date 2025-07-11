@@ -1,29 +1,37 @@
 """
-Find the length of the longest mountain in an array.
+Longest Mountain Problem Solution
 
-A mountain is defined as a sequence of consecutive elements where:
-1. The sequence starts with strictly increasing elements
-2. Followed by strictly decreasing elements
-3. The mountain must have at least 3 elements
+Find the length of the longest mountain in an array using peak detection.
+A mountain is a sequence with strictly increasing then decreasing elements.
 
-Args:
-    num_list (list[int]): List of integers to search for mountains
-    
-Returns:
-    int: Length of the longest mountain found, or 0 if no mountain exists
-    
-Examples:
-    >>> longest_mount([2, 1, 4, 7, 3, 2, 5])
-    5  # Mountain: [1, 4, 7, 3, 2]
-    
-    >>> longest_mount([2, 2, 2])
-    0  # No mountain (no strictly increasing/decreasing parts)
-    
-    >>> longest_mount([0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0])
-    11  # Entire array forms one mountain
+Example: [2, 1, 4, 7, 3, 2, 5] → 5 (mountain: [1, 4, 7, 3, 2])
 """
 
 def longest_mount(num_list: list[int]) -> int:
+    """
+    Find the length of the longest mountain in an array.
+    
+    Args:
+        num_list (list[int]): Array of integers to search for mountains
+        
+    Returns:
+        int: Length of the longest mountain, or 0 if no mountain exists
+        
+    Algorithm:
+        1. Iterate through array to find potential peaks (local maxima)
+        2. For each peak, expand left while strictly increasing
+        3. Expand right while strictly decreasing
+        4. Calculate mountain length and track maximum
+        5. Return the longest mountain found
+        
+    Time: O(n), Space: O(1)
+    
+    Example:
+        >>> longest_mount([2, 1, 4, 7, 3, 2, 5])
+        5  # Mountain: [1, 4, 7, 3, 2]
+        
+    Note: A mountain must have at least 3 elements with strict increase then decrease.
+    """
 
     
     n = len(num_list)
