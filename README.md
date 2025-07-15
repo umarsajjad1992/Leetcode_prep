@@ -8,7 +8,8 @@ Each folder contains:
 
 | Topic               | Solved |
 |--------------------|--------|
-| Arrays             | 🔄     |
+| Arrays             | ✅     |
+| Bit Manipulation   | 🔄     |
 | Strings            | ⏳     |
 | Linked Lists       | ⏳     |
 | Trees              | ⏳     |
