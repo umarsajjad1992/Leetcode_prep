@@ -8,7 +8,7 @@ Example: [4, 1, 2, 1, 2] → 4 (appears only once)
 """
 
 # Hashing technique
-def sing_num(num_list: list[int]) -> int:
+def sing_num(num_list: list[int]):
     """
     Find the single number using hash table approach.
     
@@ -36,9 +36,10 @@ def sing_num(num_list: list[int]) -> int:
             mydict[num] = 1
             continue
         mydict[num] += 1
-    key_with_smallest_value = min(mydict, key=mydict.get)
-    return key_with_smallest_value
-
+    for key, value in mydict.items():
+        if value == 1:
+            return key
+        
 # Bit Manipulation technique
 def sing_num_bit(num_list: list[int]) -> int:
     """
