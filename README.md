@@ -7,15 +7,16 @@ Each folder contains:
 ## ✅ Progress
 
 | Topic               | Solved |
-|--------------------|--------|
-| Arrays             | ✅     |
-| Bit Manipulation   | 🔄     |
-| Strings            | ⏳     |
-| Linked Lists       | ⏳     |
-| Trees              | ⏳     |
-| Graphs             | ⏳     |
-| Dynamic Programming| ⏳     |
-| Math               | ⏳     |
+|-------------------- |--------|
+| Arrays              | ✅     |
+| Bit Manipulation    | ✅     |
+| Dynamic Programming | 🔄     |
+| Strings             | ⏳     |
+| Linked Lists        | ⏳     |
+| Trees               | ⏳     |
+| Graphs              | ⏳     |
+| Dynamic Programming | ⏳     |
+| Math                | ⏳     |
 
 > ⏳ = Yet to start, 🔄 = In progress, ✅ = Completed
 
