@@ -40,5 +40,19 @@ def max_subarray_sum(num_list: list[int]) -> int:
     for i, num in enumerate(num_list):
         dp[i] = max(num, dp[i - 1] + num)
     return max(dp)
+
+
+def max_subarray_sumv2(num_list: list[int]) -> int:
+    maxSum = num_list[0]
+    currentSum = 0
+
+    for num in num_list:
+        if currentSum < 0:
+            currentSum = 0
+        currentSum += num
+        maxSum = max(maxSum, currentSum)
     
-print(max_subarray_sum([]))
+    return maxSum
+    
+print(max_subarray_sum([-2, 1, -3, 4, -1 ,2, 1, -5, 4]))
+print(max_subarray_sumv2([-2, 1, -3, 4, -1 ,2, 1, -5, 4]))
