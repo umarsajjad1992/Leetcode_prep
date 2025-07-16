@@ -10,7 +10,8 @@ Each folder contains:
 |-------------------- |--------|
 | Arrays              | ✅     |
 | Bit Manipulation    | ✅     |
-| Dynamic Programming | 🔄     |
+| Dynamic Programming | ✅     |
+| BackTracking        | 🔄     |
 | Strings             | ⏳     |
 | Linked Lists        | ⏳     |
 | Trees               | ⏳     |
