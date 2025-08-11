@@ -71,7 +71,7 @@ def deleteNodes(head: Optional[ListNode], val) -> Optional[ListNode]:
     dummy_head.next = head
 
     curr = dummy_head
-    while curr and curr.next:
+    while curr.next:
 
         if curr.next.val == val: 
             curr.next = curr.next.next
@@ -103,7 +103,7 @@ def main():
     head.next.next.next.next.next = ListNode(6)
     
     # Remove all nodes with value 6
-    deleteNodes(head, 4)
+    deleteNodes(head, 1)
 
 if __name__ == "__main__":
     main()
