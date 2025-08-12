@@ -37,7 +37,7 @@ class ListNode:
         self.val = val
         self.next = next
 
-def is_palindrome(head: Optional[ListNode]):
+def is_palindrome(head: Optional[ListNode]) -> bool:
     """
     Check if a singly linked list forms a palindrome.
     
@@ -83,10 +83,11 @@ def is_palindrome(head: Optional[ListNode]):
     while right:
         if left.val != right.val:
             print("Not a Palindrome")
-            return
+            return False
         left = left.next
         right = right.next
     print("It is a Palindrome")
+    return True
 
 def main():
     """
