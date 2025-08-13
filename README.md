@@ -16,7 +16,6 @@ Each folder contains:
 | Linked Lists        | ✅     |
 | Trees               | ⏳     |
 | Graphs              | ⏳     |
-| Dynamic Programming | ⏳     |
 | Math                | ⏳     |
 
 > ⏳ = Yet to start, 🔄 = In progress, ✅ = Completed
