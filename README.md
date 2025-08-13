@@ -12,7 +12,7 @@ Each folder contains:
 | Bit Manipulation    | ✅     |
 | Dynamic Programming | ✅     |
 | BackTracking        | ✅     |
-| Strings             | ⏳     |
+| Stacks              | 🔄     |
 | Linked Lists        | ✅     |
 | Trees               | ⏳     |
 | Graphs              | ⏳     |
