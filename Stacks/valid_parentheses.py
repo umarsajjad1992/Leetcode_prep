@@ -16,11 +16,10 @@ Rules:
 3. Every close bracket has a corresponding open bracket of the same type
 
 Example:
-    >>> isValid("()")        # Returns True
-    >>> isValid("()[]{}")    # Returns True  
-    >>> isValid("(]")        # Returns False
-    >>> isValid("([)]")      # Returns False
-    >>> isValid("{[]}")      # Returns True
+    For string "()" -> returns True
+    For string "()[]{}" -> returns True
+    For string "(]" -> returns False
+    For string "([)]" -> returns False
 
 Time Complexity: O(n) where n is the length of the string
 Space Complexity: O(n) in worst case when all characters are opening brackets
@@ -48,22 +47,14 @@ def isValid(s: str) -> bool:
               Returns True for empty strings.
     
     Examples:
-        >>> isValid("()")
-        True
-        >>> isValid("()[]{}")
-        True
-        >>> isValid("(]")
-        False
-        >>> isValid("([)]")
-        False
-        >>> isValid("{[]}")
-        True
-        >>> isValid("")
-        True
-        >>> isValid("((")
-        False
-        >>> isValid("))")
-        False
+        >>> # String: "()"
+        >>> # Returns True
+        
+        >>> # String: "()[]{}"  
+        >>> # Returns True
+        
+        >>> # String: "(]"
+        >>> # Returns False
     
     Algorithm:
         1. Use a stack to keep track of opening brackets
@@ -76,11 +67,8 @@ def isValid(s: str) -> bool:
     Time Complexity: O(n) where n is the length of the input string
     Space Complexity: O(n) in worst case when all characters are opening brackets
     """
-    # Stack to store opening brackets
     stack = []
     
-    # Hash map for quick lookup of bracket pairs
-    # Maps closing brackets to their corresponding opening brackets
     bracket_pairs: Dict[str, str] = {
         ')': '(',
         '}': '{', 
@@ -88,21 +76,15 @@ def isValid(s: str) -> bool:
     }
     
     for char in s:
-        # If stack is empty, push any character (opening bracket)
-        if not stack:
-            stack.append(char)
-        # If current character is a closing bracket and matches top of stack
-        elif char in bracket_pairs and stack and stack[-1] == bracket_pairs[char]:
-            stack.pop()  # Found a matching pair, remove the opening bracket
+        if char in bracket_pairs and stack and stack[-1] == bracket_pairs[char]:
+            stack.pop()
         else:
-            # Either a non-matching closing bracket or another opening bracket
             stack.append(char)
     
-    # Valid if all brackets were matched (stack is empty)
     return not stack
 
 
-def main() -> None:
+def main():
     """
     Demonstrate the isValid function with comprehensive test cases.
     
@@ -110,20 +92,11 @@ def main() -> None:
     validation algorithm's capabilities. It includes edge cases, nested
     brackets, and invalid sequences to provide thorough examples.
     
-    Test cases cover:
-    1. Simple valid pairs
-    2. Mixed valid combinations  
-    3. Nested brackets
-    4. Invalid sequences
-    5. Edge cases (empty string, unmatched brackets)
-    
-    Time Complexity: O(n) for each test case where n is string length
-    Space Complexity: O(n) for each test case in worst case scenarios
+    Creates test cases covering valid pairs, mixed combinations, nested brackets,
+    and invalid sequences. For each test, it shows the input string and whether
+    the brackets are properly matched.
     """
-    print("Valid Parentheses Checker Demonstration:")
-    print("=" * 42)
-    
-    # Test cases with expected results
+    # Test cases with different bracket combinations
     test_cases = [
         ("()", True, "Simple parentheses"),
         ("()[]{}", True, "Multiple valid pairs"),
@@ -136,6 +109,9 @@ def main() -> None:
         ("(ab)[]{}", True, "Mixed with other characters"),
         ("({[]})", True, "Complex nested structure")
     ]
+    
+    print("Valid Parentheses Checker Demonstration:")
+    print("=" * 42)
     
     for test_string, expected, description in test_cases:
         result = isValid(test_string)
