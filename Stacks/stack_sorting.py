@@ -85,7 +85,7 @@ def stack_sort(stack: List[int]) -> List[int]:
         
         # Move elements from temp stack back to original stack
         # until we find the correct position for current element
-        while temp_stack and temp_stack[-1] < current_element:
+        while temp_stack and temp_stack[-1] > current_element:
             # Move larger elements back to original stack
             stack.append(temp_stack.pop())
         
